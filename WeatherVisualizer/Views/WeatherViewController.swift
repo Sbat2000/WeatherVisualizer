@@ -11,7 +11,7 @@ class WeatherViewController: UIViewController {
 
     //MARK: Private properties
 
-    private var viewModel: WeatherViewModel?
+    private var viewModel: WeatherViewModelProtocol?
 
     //MARK: - UI Elements
 
@@ -26,14 +26,31 @@ class WeatherViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = WeatherViewModel()
         view.backgroundColor = .systemCyan
+        bindViewModel()
         setupWeatherCollectionView()
         setupViews()
         setupConstraints()
+        selectFirstWeather()
     }
 
     //MARK: - Private methods
+
+    private func bindViewModel() {
+        viewModel = WeatherViewModel()
+        viewModel?.delegate = self
+    }
+
+    private func selectFirstWeather() {
+        if let selectedIndex = viewModel?.selectedIndex {
+            let indexPath = IndexPath(item: selectedIndex, section: 0)
+            weatherCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
+            viewModel?.selectWeather(at: indexPath.row)
+            DispatchQueue.main.async {
+                self.weatherCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            }
+        }
+    }
 
     private func setupViews() {
         view.addSubview(weatherCollectionView)
@@ -76,7 +93,9 @@ class WeatherViewController: UIViewController {
 //MARK: UICollectionViewDelegate
 
 extension WeatherViewController: UICollectionViewDelegate {
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel?.selectWeather(at: indexPath.row)
+    }
 }
 
 //MARK: UICollectionViewDataSource
@@ -92,5 +111,14 @@ extension WeatherViewController: UICollectionViewDataSource {
         let weather = viewModel.weatherTypes[indexPath.item]
         cell.configure(with: weather)
         return cell
+    }
+}
+
+//MARK: WeatherViewModelDelegate
+
+extension WeatherViewController: WeatherViewModelDelegate {
+    func didUpdateWeather(_ viewModel: WeatherViewModelProtocol) {
+        guard let selectedWeather = viewModel.selectedWeather else { return }
+        print(selectedWeather.localizedName)
     }
 }

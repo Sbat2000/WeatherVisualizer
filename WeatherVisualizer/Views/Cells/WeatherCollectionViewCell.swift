@@ -10,6 +10,13 @@ import UIKit
 class WeatherCollectionViewCell: UICollectionViewCell {
     static let reuseIdentifier = "WeatherCell"
 
+    override var isSelected: Bool {
+        didSet {
+            contentView.backgroundColor = isSelected ? UIColor.systemGray.withAlphaComponent(0.2) : UIColor.clear
+                       contentView.layer.shadowOpacity = isSelected ? 0.5 : 0.3
+        }
+    }
+
     //MARK: - UI Elements
 
     private lazy var weatherImageView: UIImageView = {
@@ -30,6 +37,7 @@ class WeatherCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         setupViews()
         setupConstraints()
+        setupLayer()
     }
 
     required init?(coder: NSCoder) {
@@ -44,6 +52,15 @@ class WeatherCollectionViewCell: UICollectionViewCell {
     }
 
     // MARK: - Private methods
+
+    private func setupLayer() {
+        contentView.layer.cornerRadius = 8
+        contentView.layer.masksToBounds = true
+        contentView.layer.shadowColor = UIColor.black.cgColor
+        contentView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        contentView.layer.shadowRadius = 4
+        contentView.layer.shadowOpacity = 0.3
+    }
 
     private func setupViews() {
         contentView.addSubview(weatherImageView)
