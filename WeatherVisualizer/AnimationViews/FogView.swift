@@ -7,9 +7,7 @@
 
 import UIKit
 
-import UIKit
-
-class FogView: UIView {
+final class FogView: UIView {
     
     override class var layerClass: AnyClass {
         return CAEmitterLayer.self
