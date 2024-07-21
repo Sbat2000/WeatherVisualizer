@@ -26,7 +26,6 @@ class WeatherViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemCyan
         bindViewModel()
         setupWeatherCollectionView()
         setupViews()
@@ -136,14 +135,19 @@ private extension WeatherViewController {
 
         switch nameKey {
         case "Snow":
+            view.backgroundColor = .systemGray
             animationView = SnowView(frame: view.bounds)
         case "Rain":
+            view.backgroundColor = .systemGray
             animationView = RainView(frame: view.bounds)
         case "Fog":
+            view.backgroundColor = .systemGray
             animationView = FogView(frame: view.bounds)
         case "Sunny":
+            view.backgroundColor = .systemCyan
             animationView = SunnyView(frame: view.bounds)
         case "Thunderstorm":
+            view.backgroundColor = .systemGray
             animationView = ThunderstormView(frame: view.bounds)
         default:
             return
