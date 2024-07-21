@@ -18,7 +18,6 @@ class WeatherViewController: UIViewController {
     private lazy var weatherCollectionView: UICollectionView = {
         let layout = createCompositionalLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.layer.name = "weatherCollectionViewLayer"
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
@@ -96,6 +95,9 @@ class WeatherViewController: UIViewController {
 extension WeatherViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel?.selectWeather(at: indexPath.row)
+        DispatchQueue.main.async {
+            self.weatherCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        }
     }
 }
 

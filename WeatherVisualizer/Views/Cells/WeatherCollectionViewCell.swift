@@ -27,6 +27,9 @@ class WeatherCollectionViewCell: UICollectionViewCell {
 
     private lazy var weatherLabel: UILabel = {
         let weatherLabel = UILabel()
+        weatherLabel.textAlignment = .center
+        weatherLabel.adjustsFontSizeToFitWidth = true
+        weatherLabel.minimumScaleFactor = 0.5
         weatherLabel.translatesAutoresizingMaskIntoConstraints = false
         return weatherLabel
     }()
@@ -75,7 +78,9 @@ class WeatherCollectionViewCell: UICollectionViewCell {
             weatherImageView.heightAnchor.constraint(equalToConstant: 50),
 
             weatherLabel.topAnchor.constraint(equalTo: weatherImageView.bottomAnchor, constant: 8),
-            weatherLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
+            weatherLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
+            weatherLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
+            weatherLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -8)
         ])
     }
 }
