@@ -128,29 +128,27 @@ extension WeatherViewController: WeatherViewModelDelegate {
 //MARK: - Animation methods
 
 private extension WeatherViewController {
-    func addAnimationLayer(for nameKey: String) {
+    func addAnimationLayer(for nameKey: WeatherTypeName) {
         removePreviousAnimationLayer()
 
         let animationView: UIView?
 
         switch nameKey {
-        case "Snow":
+        case .snow:
             view.backgroundColor = .systemGray
             animationView = SnowView(frame: view.bounds)
-        case "Rain":
+        case .rain:
             view.backgroundColor = .systemGray
             animationView = RainView(frame: view.bounds)
-        case "Fog":
+        case .fog:
             view.backgroundColor = .systemGray
             animationView = FogView(frame: view.bounds)
-        case "Sunny":
+        case .sunny:
             view.backgroundColor = .systemCyan
             animationView = SunnyView(frame: view.bounds)
-        case "Thunderstorm":
+        case .thunderstorm:
             view.backgroundColor = .systemGray
             animationView = ThunderstormView(frame: view.bounds)
-        default:
-            return
         }
 
         if let animationView = animationView {
@@ -164,7 +162,7 @@ private extension WeatherViewController {
             }
         }
     }
-
+    
     func removePreviousAnimationLayer() {
         view.subviews.forEach { subview in
             if subview.layer.name == "weatherAnimationLayer" {

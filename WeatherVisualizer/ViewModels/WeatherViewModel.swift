@@ -12,11 +12,11 @@ final class WeatherViewModel: WeatherViewModelProtocol {
     weak var delegate: WeatherViewModelDelegate?
 
     private(set) var weatherTypes: [WeatherType] = [
-        WeatherType(nameKey: "Sunny", imageName: "sun.max"),
-        WeatherType(nameKey: "Rain", imageName: "cloud.rain"),
-        WeatherType(nameKey: "Thunderstorm", imageName: "cloud.bolt.rain"),
-        WeatherType(nameKey: "Fog", imageName: "cloud.fog"),
-        WeatherType(nameKey: "Snow", imageName: "cloud.snow")
+        WeatherType(nameKey: .sunny, imageName: "sun.max"),
+        WeatherType(nameKey: .rain, imageName: "cloud.rain"),
+        WeatherType(nameKey: .thunderstorm, imageName: "cloud.bolt.rain"),
+        WeatherType(nameKey: .fog, imageName: "cloud.fog"),
+        WeatherType(nameKey: .snow, imageName: "cloud.snow")
     ]
 
     private(set) var selectedWeather: WeatherType? {

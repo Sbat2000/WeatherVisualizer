@@ -7,11 +7,20 @@
 
 import Foundation
 
+enum WeatherTypeName: String {
+    case sunny
+    case rain
+    case thunderstorm
+    case fog
+    case snow
+}
+
+
 struct WeatherType {
-    let nameKey: String
+    let nameKey: WeatherTypeName
     let imageName: String
 
     var localizedName: String {
-        return NSLocalizedString(nameKey, comment: "")
+        return NSLocalizedString(nameKey.rawValue.capitalized, comment: "")
     }
 }
