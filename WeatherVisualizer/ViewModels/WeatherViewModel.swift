@@ -43,6 +43,4 @@ final class WeatherViewModel: WeatherViewModelProtocol {
     func selectWeather(at index: Int) {
         selectedWeather = weatherTypes[index]
     }
-
 }
-

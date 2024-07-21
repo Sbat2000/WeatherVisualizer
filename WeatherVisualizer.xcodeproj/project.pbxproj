@@ -18,6 +18,11 @@
 		E2F370422C4932BB00126CB7 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F370412C4932BB00126CB7 /* WeatherViewModel.swift */; };
 		E2F370452C494FB500126CB7 /* WeatherViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F370442C494FB500126CB7 /* WeatherViewModelDelegate.swift */; };
 		E2F370472C49506E00126CB7 /* WeatherViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F370462C49506E00126CB7 /* WeatherViewModelProtocol.swift */; };
+		E2F3704A2C4CF94C00126CB7 /* SnowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F370492C4CF94C00126CB7 /* SnowView.swift */; };
+		E2F3704C2C4CFB9E00126CB7 /* RainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F3704B2C4CFB9E00126CB7 /* RainView.swift */; };
+		E2F3704E2C4CFC6C00126CB7 /* FogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F3704D2C4CFC6C00126CB7 /* FogView.swift */; };
+		E2F370502C4CFF2B00126CB7 /* SunnyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F3704F2C4CFF2B00126CB7 /* SunnyView.swift */; };
+		E2F370522C4D049800126CB7 /* ThunderstormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F370512C4D049800126CB7 /* ThunderstormView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +39,11 @@
 		E2F370412C4932BB00126CB7 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		E2F370442C494FB500126CB7 /* WeatherViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModelDelegate.swift; sourceTree = "<group>"; };
 		E2F370462C49506E00126CB7 /* WeatherViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModelProtocol.swift; sourceTree = "<group>"; };
+		E2F370492C4CF94C00126CB7 /* SnowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowView.swift; sourceTree = "<group>"; };
+		E2F3704B2C4CFB9E00126CB7 /* RainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainView.swift; sourceTree = "<group>"; };
+		E2F3704D2C4CFC6C00126CB7 /* FogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FogView.swift; sourceTree = "<group>"; };
+		E2F3704F2C4CFF2B00126CB7 /* SunnyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnyView.swift; sourceTree = "<group>"; };
+		E2F370512C4D049800126CB7 /* ThunderstormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThunderstormView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +76,7 @@
 		E2F3701F2C49199300126CB7 /* WeatherVisualizer */ = {
 			isa = PBXGroup;
 			children = (
+				E2F370482C4CF92C00126CB7 /* AnitamoinViews */,
 				E2F370432C494F9600126CB7 /* Protocols */,
 				E2F370342C492C0F00126CB7 /* Models */,
 				E2F370352C492C1D00126CB7 /* Views */,
@@ -136,6 +147,18 @@
 				E2F370462C49506E00126CB7 /* WeatherViewModelProtocol.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		E2F370482C4CF92C00126CB7 /* AnitamoinViews */ = {
+			isa = PBXGroup;
+			children = (
+				E2F370492C4CF94C00126CB7 /* SnowView.swift */,
+				E2F3704B2C4CFB9E00126CB7 /* RainView.swift */,
+				E2F3704D2C4CFC6C00126CB7 /* FogView.swift */,
+				E2F3704F2C4CFF2B00126CB7 /* SunnyView.swift */,
+				E2F370512C4D049800126CB7 /* ThunderstormView.swift */,
+			);
+			path = AnitamoinViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,12 +235,17 @@
 			files = (
 				E2F370402C492EAD00126CB7 /* WeatherCollectionViewCell.swift in Sources */,
 				E2F370422C4932BB00126CB7 /* WeatherViewModel.swift in Sources */,
+				E2F3704C2C4CFB9E00126CB7 /* RainView.swift in Sources */,
+				E2F3704A2C4CF94C00126CB7 /* SnowView.swift in Sources */,
 				E2F370252C49199300126CB7 /* WeatherViewController.swift in Sources */,
 				E2F370212C49199300126CB7 /* AppDelegate.swift in Sources */,
+				E2F370522C4D049800126CB7 /* ThunderstormView.swift in Sources */,
 				E2F3703D2C492E7F00126CB7 /* WeatherType.swift in Sources */,
+				E2F3704E2C4CFC6C00126CB7 /* FogView.swift in Sources */,
 				E2F370452C494FB500126CB7 /* WeatherViewModelDelegate.swift in Sources */,
 				E2F370232C49199300126CB7 /* SceneDelegate.swift in Sources */,
 				E2F370472C49506E00126CB7 /* WeatherViewModelProtocol.swift in Sources */,
+				E2F370502C4CFF2B00126CB7 /* SunnyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

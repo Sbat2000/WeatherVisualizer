@@ -26,7 +26,6 @@ class WeatherViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemCyan
         bindViewModel()
         setupWeatherCollectionView()
         setupViews()
@@ -90,15 +89,18 @@ class WeatherViewController: UIViewController {
     }
 }
 
-//MARK: UICollectionViewDelegate
+//MARK: - UICollectionViewDelegate
 
 extension WeatherViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel?.selectWeather(at: indexPath.row)
+        DispatchQueue.main.async {
+            self.weatherCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        }
     }
 }
 
-//MARK: UICollectionViewDataSource
+//MARK: - UICollectionViewDataSource
 
 extension WeatherViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -119,6 +121,59 @@ extension WeatherViewController: UICollectionViewDataSource {
 extension WeatherViewController: WeatherViewModelDelegate {
     func didUpdateWeather(_ viewModel: WeatherViewModelProtocol) {
         guard let selectedWeather = viewModel.selectedWeather else { return }
-        print(selectedWeather.localizedName)
+        addAnimationLayer(for: selectedWeather.nameKey)
+    }
+}
+
+//MARK: - Animation methods
+
+private extension WeatherViewController {
+    func addAnimationLayer(for nameKey: String) {
+        removePreviousAnimationLayer()
+
+        let animationView: UIView?
+
+        switch nameKey {
+        case "Snow":
+            view.backgroundColor = .systemGray
+            animationView = SnowView(frame: view.bounds)
+        case "Rain":
+            view.backgroundColor = .systemGray
+            animationView = RainView(frame: view.bounds)
+        case "Fog":
+            view.backgroundColor = .systemGray
+            animationView = FogView(frame: view.bounds)
+        case "Sunny":
+            view.backgroundColor = .systemCyan
+            animationView = SunnyView(frame: view.bounds)
+        case "Thunderstorm":
+            view.backgroundColor = .systemGray
+            animationView = ThunderstormView(frame: view.bounds)
+        default:
+            return
+        }
+
+        if let animationView = animationView {
+            animationView.isUserInteractionEnabled = false
+            animationView.alpha = 0.0
+            animationView.layer.name = "weatherAnimationLayer"
+            view.addSubview(animationView)
+
+            UIView.animate(withDuration: 0.5) {
+                animationView.alpha = 1.0
+            }
+        }
+    }
+
+    func removePreviousAnimationLayer() {
+        view.subviews.forEach { subview in
+            if subview.layer.name == "weatherAnimationLayer" {
+                UIView.animate(withDuration: 0.5, animations: {
+                    subview.alpha = 0.0
+                }) { _ in
+                    subview.removeFromSuperview()
+                }
+            }
+        }
     }
 }
