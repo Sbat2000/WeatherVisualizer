@@ -52,4 +52,3 @@ final class SnowView: UIView {
         return cell
     }
 }
-

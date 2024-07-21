@@ -154,7 +154,7 @@ private extension WeatherViewController {
         if let animationView = animationView {
             animationView.isUserInteractionEnabled = false
             animationView.alpha = 0.0
-            animationView.layer.name = "weatherAnimationLayer"
+            animationView.layer.name = Constants.weatherAnimationLayerName
             view.addSubview(animationView)
 
             UIView.animate(withDuration: 0.5) {
@@ -162,16 +162,14 @@ private extension WeatherViewController {
             }
         }
     }
-    
+
     func removePreviousAnimationLayer() {
-        view.subviews.forEach { subview in
-            if subview.layer.name == "weatherAnimationLayer" {
-                UIView.animate(withDuration: 0.5, animations: {
-                    subview.alpha = 0.0
-                }) { _ in
-                    subview.removeFromSuperview()
-                }
-            }
+        let layersToRemove = view.subviews.filter { $0.layer.name == Constants.weatherAnimationLayerName }
+
+        UIView.animate(withDuration: 0.5, animations: {
+            layersToRemove.forEach { $0.alpha = 0.0 }
+        }) { _ in
+            layersToRemove.forEach { $0.removeFromSuperview() }
         }
     }
 }

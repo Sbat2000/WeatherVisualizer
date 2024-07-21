@@ -8,15 +8,15 @@
 import Foundation
 
 final class WeatherViewModel: WeatherViewModelProtocol {
- 
+
     weak var delegate: WeatherViewModelDelegate?
 
     private(set) var weatherTypes: [WeatherType] = [
-        WeatherType(nameKey: .sunny, imageName: "sun.max"),
-        WeatherType(nameKey: .rain, imageName: "cloud.rain"),
-        WeatherType(nameKey: .thunderstorm, imageName: "cloud.bolt.rain"),
-        WeatherType(nameKey: .fog, imageName: "cloud.fog"),
-        WeatherType(nameKey: .snow, imageName: "cloud.snow")
+        WeatherType(nameKey: .sunny, imageName: Constants.WeatherImageNames.sunny),
+        WeatherType(nameKey: .rain, imageName: Constants.WeatherImageNames.rain),
+        WeatherType(nameKey: .thunderstorm, imageName: Constants.WeatherImageNames.thunderstorm),
+        WeatherType(nameKey: .fog, imageName: Constants.WeatherImageNames.fog),
+        WeatherType(nameKey: .snow, imageName: Constants.WeatherImageNames.snow)
     ]
 
     private(set) var selectedWeather: WeatherType? {
