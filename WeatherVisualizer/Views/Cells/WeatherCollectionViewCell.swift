@@ -13,7 +13,7 @@ class WeatherCollectionViewCell: UICollectionViewCell {
     override var isSelected: Bool {
         didSet {
             contentView.backgroundColor = isSelected ? UIColor.systemGray.withAlphaComponent(0.2) : UIColor.clear
-                       contentView.layer.shadowOpacity = isSelected ? 0.5 : 0.3
+            contentView.layer.shadowOpacity = isSelected ? 0.5 : 0.3
         }
     }
 
