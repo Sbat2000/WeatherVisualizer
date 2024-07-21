@@ -8,32 +8,32 @@
 import UIKit
 
 final class RainView: UIView {
-    
+
     override class var layerClass: AnyClass {
         return CAEmitterLayer.self
     }
-    
+
     private var emitterLayer: CAEmitterLayer {
         return layer as! CAEmitterLayer
     }
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupEmitter()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupEmitter()
     }
-    
+
     private func setupEmitter() {
         emitterLayer.emitterShape = .line
         emitterLayer.emitterPosition = CGPoint(x: bounds.midX, y: 0)
         emitterLayer.emitterSize = CGSize(width: bounds.size.width, height: 1)
         emitterLayer.emitterCells = [createRainCell()]
     }
-    
+
     private func createRainCell() -> CAEmitterCell {
         let cell = CAEmitterCell()
         cell.contents = UIImage(systemName: "drop.fill")?.cgImage
