@@ -119,9 +119,8 @@ extension WeatherViewController: UICollectionViewDataSource {
 //MARK: WeatherViewModelDelegate
 
 extension WeatherViewController: WeatherViewModelDelegate {
-    func didUpdateWeather(_ viewModel: WeatherViewModelProtocol) {
-        guard let selectedWeather = viewModel.selectedWeather else { return }
-        addAnimationLayer(for: selectedWeather.nameKey)
+    func didUpdateWeather(_ weather: WeatherType) {
+        addAnimationLayer(for: weather.nameKey)
     }
 }
 

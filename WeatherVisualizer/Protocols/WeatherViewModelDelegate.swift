@@ -8,5 +8,5 @@
 import Foundation
 
 protocol WeatherViewModelDelegate: AnyObject {
-    func didUpdateWeather(_ viewModel: WeatherViewModelProtocol)
+    func didUpdateWeather(_ weather: WeatherType)
 }
