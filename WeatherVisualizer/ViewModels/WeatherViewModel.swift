@@ -21,7 +21,8 @@ final class WeatherViewModel: WeatherViewModelProtocol {
 
     private(set) var selectedWeather: WeatherType? {
         didSet {
-            delegate?.didUpdateWeather(self)
+            guard let selectedWeather else { return }
+            delegate?.didUpdateWeather(selectedWeather)
         }
     }
 
