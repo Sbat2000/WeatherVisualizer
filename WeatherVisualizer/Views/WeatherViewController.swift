@@ -42,12 +42,16 @@ class WeatherViewController: UIViewController {
 
     private func selectFirstWeather() {
         if let selectedIndex = viewModel?.selectedIndex {
-            let indexPath = IndexPath(item: selectedIndex, section: 0)
-            weatherCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
-            viewModel?.selectWeather(at: indexPath.row)
-            DispatchQueue.main.async {
-                self.weatherCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-            }
+            selectWeatherAndScrollToItem(at: selectedIndex)
+        }
+    }
+
+    private func selectWeatherAndScrollToItem(at index: Int) {
+        viewModel?.selectWeather(at: index)
+        let indexPath = IndexPath(item: index, section: 0)
+        weatherCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
+        DispatchQueue.main.async {
+            self.weatherCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
     }
 
@@ -93,10 +97,7 @@ class WeatherViewController: UIViewController {
 
 extension WeatherViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel?.selectWeather(at: indexPath.row)
-        DispatchQueue.main.async {
-            self.weatherCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        }
+        selectWeatherAndScrollToItem(at: indexPath.row)
     }
 }
 
