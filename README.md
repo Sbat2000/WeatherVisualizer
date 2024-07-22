@@ -40,7 +40,7 @@ WeatherVisualizer - это приложение для отображения р
 Для запуска проекта выполните следующие шаги:
 
 1. Клонируйте репозиторий:
-   git clone https://github.com/yourusername/WeatherVisualizer.git
+   git clone https://github.com/Sbat2000/WeatherVisualizer.git
 2. Запустите проект в xCode.
 
    
